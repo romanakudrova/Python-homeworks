@@ -1,0 +1,41 @@
+#Vymyšlené zadání, Příklad 21
+
+import pandas as pd
+
+tabulka = pd.read_csv("twilio.csv")
+
+#Kolik má soubor řádků a sloupců
+print(tabulka.info())
+#print(tabulka.index())
+#print(tabulka.columns())
+
+#5 řádků  s cenamina začátku souboru s použitím fce iloc a head
+print(tabulka.iloc[0:5, 2:])
+print(tabulka.head(5))
+
+#Vyber nejnovější ceny z posledního řádku
+nejnovejsi_ceny = tabulka.loc["3/15/2021": , :]
+print(nejnovejsi_ceny)
+
+#Počet řádků uložit do proměnné pocet_radku
+print(tabulka.count())
+
+#Vymyšlené zadání, Příklad 22
+import pandas as pd
+
+tabulka = pd.read_csv("10_char_deaths.csv", index_col="Name", encoding="utf-8")
+
+#zobrazit sloupce, které tabulka má
+print(tabulka.info())
+
+#Použij funkci loc ke zjištění informací o smrti postavy jménem "Hali".
+print(tabulka.loc["Hali", :])
+
+#Použij funkci loc k zobrazení řádků mezi "Gevin Harlaw" a "Gillam".
+print(tabulka.loc["Gevin Harlaw":"Gillam", :])
+
+#Použij funkci loc k zobrazení řádků mezi "Gevin Harlaw" a "Gillam" a sloupce Death Year.
+print(tabulka.loc["Gevin Harlaw":"Gillam", : "Death Year"])
+
+#Použij funkci loc k zobrazení řádků mezi "Gevin Harlaw" a "Gillam" a informace o tom, v jakých knihách se postava vyskytuje, tj. vypiš všechny sloupce mezi GoT a DwD.
+print(tabulka.loc["Gevin Harlaw":"Gillam", "GoT":"DwD"])
